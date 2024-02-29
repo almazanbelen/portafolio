@@ -1,0 +1,142 @@
+---
+import Html from "./icons/Html.astro";
+import Css from "./icons/Css.astro";
+import JavaScript from "./icons/JavaScript.astro";
+import React from "./icons/React.astro";
+import MongoDB from "./icons/MongoDB.astro";
+import Express from "./icons/Express.astro";
+import NodeJs from "./icons/NodeJs.astro";
+import SocialPill from "./SocialPill.astro";
+import GitHub from "./icons/GitHub.astro";
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    icon: Html,
+  },
+  CSS: {
+    name: "CSS",
+    icon: Css,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    icon: JavaScript,
+  },
+  REACT: {
+    name: "React",
+    icon: React,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    icon: MongoDB,
+  },
+  EXPRESS: {
+    name: "Express",
+    icon: Express,
+  },
+  NODEJS: {
+    name: "NodeJS",
+    icon: NodeJs,
+  },
+};
+
+const PROjECTS = [
+  {
+    title: "Proyecto Karuna",
+    description:
+      "Karuna es una pagina web de terapias holísticas desarrollada con React.js, JavaScript y CSS. Diseñada para brindar una experiencia interactiva y estética. Mi conocimiento en JavaScript me permitió agregar funcionalidades dinámicas a la página. Implementé prácticas de diseño responsivo para garantizar que la página sea accesible desde una variedad de dispositivos y tamaños de pantalla, lo que garantiza una experiencia consistente y agradable para todos los usuarios.",
+    github: "https://github.com/almazanbelen/entregaFinalAlmazanReact",
+    image: [
+      "/projects/project2/home2.webp",
+      "/projects/project2/codeApp.webp",
+      "/projects/project2/codeCart.webp",
+      "/projects/project2/codeHooks.webp",
+      "/projects/project2/code2.webp",
+    ],
+    tags: [TAGS.CSS, TAGS.REACT, TAGS.JAVASCRIPT],
+  },
+  {
+    title: "Proyecto Karuna version HTML CSS",
+    description:
+      "Este proyecto es una página web desarrollada con HTML5 y CSS para ofrecer terapias holísticas, un blog inspirador y una tienda virtual. Estructura HTML Semántica, se ha utilizado HTML5 para definir la estructura semántica de la página web. CSS se utilizó para dar estilo y diseño a la página web, se aplicaron reglas CSS para controlar el diseño de la página, incluyendo la disposición de los elementos, el tamaño del texto, los colores y los efectos visuales. Diseño Responsivo con Media Queries. Se implementaron media queries para garantizar que la página web sea totalmente receptiva. Esto permitió adaptar el diseño y la disposición de los elementos según el tamaño de la pantalla del dispositivo, proporcionando una experiencia de usuario óptima en diferentes dispositivos y resoluciones. Se empleo Flexbox y Grid Layout para crear diseños flexibles y fluidos. Estas tecnologías permitieron organizar los elementos de la página de manera eficiente, facilitando la creación de diseños complejos y responsivos. Se incorporaron transiciones y animaciones CSS para mejorar la experiencia del usuario y agregar interactividad a la página web. Se utilizaron para crear efectos suaves al cambiar de página, desplazar elementos y resaltar elementos interactivos como botones.",
+    github: "https://github.com/almazanbelen/trabajoFinal-desarroloWeb",
+    image: [
+      "/projects/project1/home.webp",
+      "/projects/project1/aboutMe.webp",
+      "/projects/project1/ecommerce.webp",
+      "/projects/project1/therapies.webp",
+      "/projects/project1/code.webp",
+    ],
+    tags: [TAGS.HTML, TAGS.CSS],
+  },
+  {
+    title: "Proyecto Back-end",
+    description:
+      "Aplicación robusta desarrollada en JavaScript utilizando Node.js y Express, con una base de datos NoSQL MongoDB. Con Node.js y Express, he construido una arquitectura backend eficiente y flexible, permitiendo una gestión ágil de rutas, controladores y middleware. La elección de MongoDB como base de datos proporciona una estructura sin esquemas rígidos y una capacidad de escalabilidad horizontal. Integré características de seguridad como la autenticación de usuarios y la gestión de sesiones, para proteger los datos sensibles y garantizar la confidencialidad del usuario.",
+    github: "https://github.com/almazanbelen/trabajoFinal-BackEnd",
+    image: [
+      "/projects/project3/codeApp3.webp",
+      "/projects/project3/codeTests.webp",
+      "/projects/project3/codeDocs.webp",
+      "/projects/project3/codeCart3.webp",
+      "/projects/project3/codeModels.webp",
+    ],
+    tags: [TAGS.JAVASCRIPT, TAGS.EXPRESS, TAGS.MONGODB, TAGS.NODEJS],
+  },
+];
+---
+
+{
+  PROjECTS.map(({ title, description, github, image, tags }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-amber-100/90 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row">
+        {tags.map((tag) => (
+          <li>
+            <span class={`flex gap-x-2 rounded-full text-xs py-1 px-2`}>
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <div class="flex justify-center gap-3 mt-8 flex-wrap">
+        <SocialPill href={github}>
+          <GitHub class="size-4 md:size-6" />
+        </SocialPill>
+      </div>
+      <section>
+        <img src={image[0]} alt={`Captura de pantalla del proyecto ${title}`} />
+        <img src={image[1]} alt={`Captura de pantalla del proyecto ${title}`} />
+        <img src={image[2]} alt={`Captura de pantalla del proyecto ${title}`} />
+        <img src={image[3]} alt={`Captura de pantalla del proyecto ${title}`} />
+        <img src={image[4]} alt={`Captura de pantalla del proyecto ${title}`} />
+      </section>
+    </article>
+  ))
+}
+
+<style>
+  section {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 46rem;
+    height: 40rem;
+  }
+  section img {
+    filter: drop-shadow(2px 2px 20px black);
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+  }
+  section img:hover {
+    cursor: crosshair;
+    width: 31.25rem;
+    opacity: 1;
+    filter: contrast(120%);
+  }
+</style>
